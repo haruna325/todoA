@@ -10,6 +10,8 @@
           <th>期日</th>
           <th>進捗率0-100</th>
           <th>メモ</th>
+          <th>編集</th>
+          <th>削除</th>
         </tr>
       </thead>
       <tbody>
@@ -20,6 +22,10 @@
           <td>{{todo.deadline}}</td>
           <td>{{todo.progress}}</td>
           <td>{{todo.memo}}</td>
+          <td><router-link to="/edit"><button type='button' @click="edit">編集</button></router-link></td>
+          <td><button type='button' @click="dialog">削除</button></td>
+          <!-- confirm('confirmポップアップウィンドウを表示しています'); -->
+            <v-dialog></v-dialog>          
         </tr>
       </tbody>
     </table>
@@ -27,6 +33,7 @@
 
 </template>
 <script>
+// import dialog from '@/components/dialog.vue'
 export default{
   data(){
     return{
@@ -37,4 +44,6 @@ export default{
     this.todos =this.$store.state.todos;
   }
 }
+
+
 </script>

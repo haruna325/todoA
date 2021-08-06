@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Add from '../views/Add.vue'
+import Edit from '../views/Edit.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,6 +24,12 @@ const routes = [
     name: 'Add',
     component :Add
   },
+  {
+    path: '/edit',
+    name: 'Edit',
+    component :Edit
+  },
+
 ]
 
 const router = new VueRouter({
