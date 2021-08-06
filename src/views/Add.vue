@@ -41,11 +41,13 @@ export default ({
     },
     methods:{
         submit(){
+            if(0 === Object.keys(this.todo).length){
+                return
+            }
             this.addtodos(this.todo);
             this.$router.push({name: 'Todos'});
             this.todo={}
         },
-        
         ...mapActions(["addtodos"])
     }
 

@@ -15,7 +15,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="todo in todos" :key='todo'>
+        <tr v-for="(todo,index) in todos" :key='index'>
           <td>{{todo.date}}</td>
           <td>{{todo.title}}</td>
           <td>{{todo.about}}</td>
@@ -23,9 +23,7 @@
           <td>{{todo.progress}}</td>
           <td>{{todo.memo}}</td>
           <td><router-link to="/edit"><button type='button' @click="edit">編集</button></router-link></td>
-          <td><button type='button' @click="dialog">削除</button></td>
-          <!-- confirm('confirmポップアップウィンドウを表示しています'); -->
-            <v-dialog></v-dialog>          
+          <td><button type='button' @click="dialog(index)" class='command'>削除</button></td>     
         </tr>
       </tbody>
     </table>
@@ -33,7 +31,7 @@
 
 </template>
 <script>
-// import dialog from '@/components/dialog.vue'
+import {mapActions} from 'vuex'
 export default{
   data(){
     return{
@@ -42,7 +40,15 @@ export default{
   },
   created(){
     this.todos =this.$store.state.todos;
-  }
+  },
+  methods:{
+        dialog: function(index){
+            if(confirm('削除してもよろしいですか？')){
+            this.todos.splice(index,1);
+        }},        
+        ...mapActions(["deletetodos"])
+    },
+    
 }
 
 
