@@ -30,8 +30,11 @@
 export default{
   data(){
     return{
-      todos:[{date:'2021/8/5',title:'サンプル1',about:'gitの勉強',deadline:'2021/8/10',progress:'20%',memo:'復習する'}]
+      todos:[]
     }
+  },
+  created(){
+    this.todos =this.$store.state.todos;
   }
 }
 </script>

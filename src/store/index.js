@@ -9,8 +9,15 @@ export default new Vuex.Store({
 
   },
   mutations: {
+    addtodos(state,todo){
+      state.todos.push(todo)
+    }
   },
   actions: {
+    addtodos({commit},todo){
+      commit("addtodos",todo)
+    },
+    
   },
   getters: {
   }
